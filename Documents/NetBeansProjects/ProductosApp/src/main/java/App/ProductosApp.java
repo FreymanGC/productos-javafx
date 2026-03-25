@@ -1,13 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package App;
-
-/**
- *
- * @author Freyman
- */
 
 import javafx.application.Application;
 import javafx.collections.*;
@@ -31,11 +22,11 @@ public class ProductosApp extends Application {
         TextField txtDescripcion = new TextField();
 
         Button btnAgregar = new Button("Agregar");
+        Button btnLimpiar = new Button("Limpiar");
 
         ListView<Producto> lista = new ListView<>(productos);
 
         GridPane form = new GridPane();
-
         form.setHgap(10);
         form.setVgap(10);
 
@@ -55,7 +46,8 @@ public class ProductosApp extends Application {
         form.add(txtDescripcion, 1, 4);
 
         form.add(btnAgregar, 1, 5);
-        form.add(lista, 1, 6);
+        form.add(btnLimpiar, 1, 6);
+        form.add(lista, 1, 7);
 
         btnAgregar.setOnAction(e -> {
 
@@ -91,6 +83,14 @@ public class ProductosApp extends Application {
             Producto producto = new Producto(codigo, nombre, precio, categoria);
 
             productos.add(producto);
+        });
+        
+        btnLimpiar.setOnAction(e -> {
+    txtCodigo.clear();
+    txtNombre.clear();
+    txtPrecio.clear();
+    txtCategoria.clear();
+    txtDescripcion.clear();
         });
 
         Scene scene = new Scene(form, 400, 500);
