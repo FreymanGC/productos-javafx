@@ -23,6 +23,8 @@ public class ProductosApp extends Application {
 
         Button btnAgregar = new Button("Agregar");
         Button btnLimpiar = new Button("Limpiar");
+        Button btnEliminar = new Button("Eliminar");
+        
 
         ListView<Producto> lista = new ListView<>(productos);
 
@@ -47,7 +49,8 @@ public class ProductosApp extends Application {
 
         form.add(btnAgregar, 1, 5);
         form.add(btnLimpiar, 1, 6);
-        form.add(lista, 1, 7);
+        form.add(btnEliminar, 1, 7);
+        form.add(lista, 1, 8);
 
         btnAgregar.setOnAction(e -> {
 
@@ -93,6 +96,13 @@ public class ProductosApp extends Application {
     txtDescripcion.clear();
         });
 
+    btnEliminar.setOnAction(e -> {
+    int indice = lista.getSelectionModel().getSelectedIndex();
+    
+    if (indice >= 0) {
+        lista.getItems().remove(indice);
+    }
+    });
         Scene scene = new Scene(form, 400, 500);
         stage.setScene(scene);
         stage.setTitle("Productos y Categorías");
